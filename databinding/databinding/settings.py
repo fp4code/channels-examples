@@ -44,16 +44,18 @@ MIDDLEWARE_CLASSES = [
 
 ROOT_URLCONF = 'databinding.urls'
 
-redis_host = os.environ.get('REDIS_HOST', 'localhost')
+# redis_host = os.environ.get('REDIS_HOST', 'localhost')
 
 # Channel layer definitions
 # http://channels.readthedocs.org/en/latest/deploying.html#setting-up-a-channel-backend
 CHANNEL_LAYERS = {
     "default": {
         # This example app uses the Redis channel layer implementation asgi_redis
-        "BACKEND": "asgi_redis.RedisChannelLayer",
+        #"BACKEND": "asgi_redis.RedisChannelLayer",
+        "BACKEND" : "asgi_ipc.IPCChannelLayer",
         "CONFIG": {
-            "hosts": [(redis_host, 6379)],
+            # "hosts": [(redis_host, 6379)],
+            "prefix": "a_quoi_sert_ce_truc",
         },
         "ROUTING": "databinding.routing.channel_routing",
     },
