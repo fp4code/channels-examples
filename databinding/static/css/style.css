@@ -89,6 +89,10 @@ input {
     width: 200px;
 }
 
+input[type=range]::-moz-range-thumb {
+    background-color: gray;
+}
+
 output {
     font-size: 20px;
     padding-left: 10px;
